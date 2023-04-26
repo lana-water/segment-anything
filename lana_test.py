@@ -5,9 +5,9 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 
-predictor = SamPredictor(build_sam(checkpoint="/Users/mac/Documents/GitHub/segment-anything/sam_vit_h_4b8939.pth"))
+predictor = SamPredictor(build_sam(checkpoint="./segment-anything/sam_vit_h_4b8939.pth"))
 
-img = cv2.imread("/Users/mac/Documents/GitHub/segment-anything/composite_img.jpg")
+img = cv2.imread("./segment-anything/composite_img.jpg")
 # print(img, "end")
 
 # Resize the image to a smaller resolution
@@ -23,7 +23,7 @@ image = cv2.resize(img, None, fx = 0.05, fy = 0.05)
 predictor.set_image(image)
 # print(predictor)
 
-sam = sam_model_registry["vit_h"](checkpoint="/Users/mac/Documents/GitHub/segment-anything/sam_vit_h_4b8939.pth")
+sam = sam_model_registry["vit_h"](checkpoint="./segment-anything/sam_vit_h_4b8939.pth")
 mask_generator = SamAutomaticMaskGenerator(sam)
 masks = mask_generator.generate(image)
 
